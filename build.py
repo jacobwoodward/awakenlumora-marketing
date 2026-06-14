@@ -110,6 +110,16 @@ html = html.replace('https://colleen-aloian.mykajabi.com/store', 'https://app.aw
 html = html.replace('https://colleen-aloian.mykajabi.com/lumora-sales-page', '/')
 html = html.replace('https://colleen-aloian.mykajabi.com', 'https://app.awakenlumora.com')
 
+# ---------------------------------------------------------------------------
+# 5) Favicon -> Lumora community icon (same as app.awakenlumora.com)
+# ---------------------------------------------------------------------------
+favicon_tags = ('<link rel="icon" type="image/png" href="assets/img/favicon.png" />\n'
+                '    <link rel="apple-touch-icon" href="assets/img/favicon.png" />')
+# Replace the existing shortcut-icon link (whatever it points to) with the new tags.
+html, n = re.subn(r'<link\b[^>]*rel="(?:shortcut icon|icon)"[^>]*/?>', favicon_tags, html, count=1)
+if n == 0:  # no existing icon link found; inject before </head>
+    html = html.replace('</head>', '    ' + favicon_tags + '\n</head>', 1)
+
 open('site/index.html', 'w', encoding='utf-8').write(html)
 
 # Report leftover external kajabi/gstatic/googleapis references
