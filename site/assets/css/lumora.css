@@ -192,6 +192,23 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 500; color: var(--ink); li
 .contrast-copy .turn { color: var(--gold); }
 .contrast-copy .big { font-size: clamp(1.5rem,3vw,2.2rem); color: var(--ink); margin-top: 1.6rem; }
 
+/* ---------- transformation: from -> to ---------- */
+.shifts { max-width: 840px; margin: 50px auto 0; display: grid; gap: 14px; }
+.shift {
+  display: grid; grid-template-columns: 1fr 34px 1.15fr; align-items: center; gap: 12px;
+  background: var(--white); border: 1px solid var(--sand); border-radius: 16px;
+  padding: 22px 30px; box-shadow: var(--shadow-sm);
+  transition: border-color .35s var(--ease), transform .35s var(--ease), box-shadow .35s var(--ease);
+}
+.shift:hover { border-color: var(--gold-soft); transform: translateY(-3px); box-shadow: var(--shadow); }
+.shift__from { color: var(--mauve); font-size: .98rem; line-height: 1.4; }
+.shift__arrow { color: var(--gold-soft); display: flex; justify-content: center; }
+.shift__to { font-family: var(--serif); font-size: clamp(1.2rem,1.9vw,1.45rem); color: var(--ink); line-height: 1.25; letter-spacing: -.01em; }
+@media (max-width: 640px){
+  .shift { grid-template-columns: 1fr; gap: 7px; padding: 20px 24px; }
+  .shift__arrow { justify-content: flex-start; transform: rotate(90deg); width: 22px; margin: 2px 0; }
+}
+
 /* ---------- how it works (timeline) ---------- */
 /* timeline geometry: rail + dot centers share x = 11px (dot is 22px wide at left:0) */
 .steps { position: relative; max-width: 640px; margin: 56px auto 0; }
