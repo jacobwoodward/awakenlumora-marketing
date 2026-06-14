@@ -205,9 +205,21 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 500; color: var(--ink); li
 
 /* ---------- founder ---------- */
 .founder { display: grid; grid-template-columns: .85fr 1.15fr; gap: clamp(36px,6vw,80px); align-items: center; }
-.founder__photo { position: relative; }
-.founder__photo img { border-radius: 260px 260px 22px 22px; box-shadow: var(--shadow); border: 1px solid var(--sand); }
-.founder__photo::after { content:""; position:absolute; inset:-14px -14px 14px; border:1px solid var(--gold-soft); border-radius: 270px 270px 28px 28px; z-index:-1; opacity:.6; }
+/* arched photo: the container IS the frame (symmetric gold outline + cream mat),
+   the image sits inside with a matching, concentric arch */
+.founder__photo {
+  position: relative;
+  padding: 9px;
+  background: var(--white);
+  border: 1px solid var(--gold-soft);
+  border-radius: 9999px 9999px 30px 30px;
+  box-shadow: var(--shadow);
+}
+.founder__photo img {
+  display: block;
+  width: 100%;
+  border-radius: 9999px 9999px 22px 22px;
+}
 .founder__stats { display:flex; flex-wrap:wrap; gap: 10px; margin: 22px 0 28px; }
 .stat { background: var(--cream-2); border: 1px solid var(--sand); border-radius: 12px; padding: 12px 18px; }
 .stat b { font-family: var(--serif); font-size: 1.5rem; color: var(--ink); display:block; line-height: 1; }
