@@ -209,6 +209,24 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 500; color: var(--ink); li
   .shift__arrow { justify-content: flex-start; transform: rotate(90deg); width: 22px; margin: 2px 0; }
 }
 
+/* ---------- scene (relatable agitation) ---------- */
+.scene { margin: 8px 0 0; }
+.scene p { font-family: var(--serif); font-size: clamp(1.3rem, 2.4vw, 1.85rem); color: var(--ink-2); line-height: 1.4; margin: 0 0 .7rem; }
+.scene__q { font-family: var(--serif); font-style: italic; font-size: clamp(1.9rem, 4vw, 3rem); color: var(--ink); line-height: 1.2; margin: 1.8rem 0 0; }
+.scene__q em { color: var(--gold); font-style: italic; }
+
+/* ---------- truth (the philosophical heart, on ink) ---------- */
+.truth {
+  background:
+    radial-gradient(75% 55% at 50% -4%, rgba(184,147,85,.26) 0%, transparent 58%),
+    radial-gradient(120% 80% at 80% 0%, #2a2036 0%, transparent 60%),
+    var(--ink);
+}
+.truth__lead { font-family: var(--serif); font-size: clamp(2rem, 4.4vw, 3.2rem); color: #FBF7F0; line-height: 1.08; margin: 0 0 1.5rem; letter-spacing: -.01em; }
+.truth p { font-size: clamp(1.05rem, 1.7vw, 1.24rem); color: #CBC1D4; line-height: 1.62; margin: 0 auto 1rem; max-width: 48ch; }
+.truth .truth__turn { font-family: var(--serif); font-style: italic; font-size: clamp(1.9rem, 3.8vw, 2.8rem); color: var(--gold-soft); margin: 1.7rem auto; max-width: none; }
+.truth .truth__promise { font-family: var(--serif); font-size: clamp(1.45rem, 2.6vw, 2rem); color: #fff; margin: 1.4rem auto 0; max-width: none; }
+
 /* ---------- how it works (timeline) ---------- */
 /* timeline geometry: rail + dot centers share x = 11px (dot is 22px wide at left:0) */
 .steps { position: relative; max-width: 640px; margin: 56px auto 0; }
