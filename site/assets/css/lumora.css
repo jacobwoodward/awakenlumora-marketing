@@ -193,11 +193,12 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 500; color: var(--ink); li
 .contrast-copy .big { font-size: clamp(1.5rem,3vw,2.2rem); color: var(--ink); margin-top: 1.6rem; }
 
 /* ---------- how it works (timeline) ---------- */
-.steps { position: relative; max-width: 640px; margin: 56px auto 0; padding-left: 14px; }
-.steps::before { content:""; position:absolute; left:18px; top:10px; bottom:10px; width:1px; background:linear-gradient(var(--gold-soft),var(--sand) 80%,transparent); }
-.step { position: relative; padding: 0 0 38px 56px; }
+/* timeline geometry: rail + dot centers share x = 11px (dot is 22px wide at left:0) */
+.steps { position: relative; max-width: 640px; margin: 56px auto 0; }
+.steps::before { content:""; position:absolute; left:11px; top:15px; bottom:20px; width:2px; transform:translateX(-50%); background:linear-gradient(var(--gold-soft),var(--sand) 85%,transparent); }
+.step { position: relative; padding: 0 0 40px 52px; }
 .step:last-child { padding-bottom: 0; }
-.step__dot { position:absolute; left:8px; top:2px; width:22px; height:22px; }
+.step__dot { position:absolute; left:0; top:2px; width:22px; height:22px; }
 .step h4 { font-size: 1.35rem; margin-bottom: 4px; font-weight: 600; }
 .step p { margin: 0; color: var(--plum); }
 .step__num { font-family: var(--sans); font-size: .72rem; font-weight: 700; letter-spacing: .14em; color: var(--gold); text-transform: uppercase; }
