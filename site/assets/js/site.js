@@ -14,11 +14,22 @@
   var nav = document.querySelector(".nav");
   var burger = document.querySelector(".nav__burger");
   if (burger && nav) {
-    burger.addEventListener("click", function () {
-      nav.classList.toggle("open");
+    var setOpen = function (open) {
+      nav.classList.toggle("open", open);
+      burger.setAttribute("aria-expanded", open ? "true" : "false");
+    };
+    burger.addEventListener("click", function (e) {
+      e.stopPropagation();
+      setOpen(!nav.classList.contains("open"));
     });
     nav.querySelectorAll(".nav__links a").forEach(function (a) {
-      a.addEventListener("click", function () { nav.classList.remove("open"); });
+      a.addEventListener("click", function () { setOpen(false); });
+    });
+    document.addEventListener("click", function (e) {
+      if (nav.classList.contains("open") && !nav.contains(e.target)) setOpen(false);
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") setOpen(false);
     });
   }
 
