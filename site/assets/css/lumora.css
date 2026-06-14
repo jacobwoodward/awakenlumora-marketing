@@ -193,9 +193,9 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 500; color: var(--ink); li
 .contrast-copy .big { font-size: clamp(1.5rem,3vw,2.2rem); color: var(--ink); margin-top: 1.6rem; }
 
 /* ---------- transformation: from -> to ---------- */
-.shifts { max-width: 840px; margin: 50px auto 0; display: grid; gap: 14px; }
+.shifts { max-width: 1000px; margin: 50px auto 0; display: grid; gap: 14px; }
 .shift {
-  display: grid; grid-template-columns: 1fr 34px 1.15fr; align-items: center; gap: 12px;
+  display: grid; grid-template-columns: 1fr 34px 1.35fr; align-items: center; gap: 12px;
   background: var(--white); border: 1px solid var(--sand); border-radius: 16px;
   padding: 22px 30px; box-shadow: var(--shadow-sm);
   transition: border-color .35s var(--ease), transform .35s var(--ease), box-shadow .35s var(--ease);
