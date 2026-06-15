@@ -77,7 +77,11 @@ section { position: relative; }
 }
 
 /* ---------- type ---------- */
-h1,h2,h3,h4 { font-family: var(--serif); font-weight: 500; color: var(--ink); line-height: 1.06; margin: 0; letter-spacing: -.01em; }
+h1,h2,h3,h4 { font-family: var(--serif); font-weight: 500; color: var(--ink); line-height: 1.06; margin: 0; letter-spacing: -.01em; text-wrap: balance; }
+/* Prevent single-word orphans on headings + subheads (balance), and on body copy (pretty) */
+.h-display, .h2, .h3, .lede, .plan__sub, .scene__q, .pillar h3, .pillar p, .key__title b,
+.fl-card__title, .lesson h2, .stat, .pricing-note, .contrast-copy p, .truth__lead, .truth__promise { text-wrap: balance; }
+p, li, .lesson__desc, .truth p, .step p { text-wrap: pretty; }
 .eyebrow {
   font-family: var(--sans); font-weight: 600; font-size: .74rem;
   letter-spacing: .22em; text-transform: uppercase; color: var(--gold);
@@ -86,7 +90,7 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 500; color: var(--ink); li
 .eyebrow::before { content: ""; width: 26px; height: 1px; background: var(--gold-soft); display: inline-block; }
 .eyebrow--center { justify-content: center; }
 .eyebrow--center::after { content: ""; width: 26px; height: 1px; background: var(--gold-soft); display: inline-block; }
-.h-display { font-size: clamp(2.6rem, 6.2vw, 5rem); }
+.h-display { font-size: clamp(2.5rem, 5.4vw, 4.4rem); }
 .h2 { font-size: clamp(2rem, 4.4vw, 3.4rem); }
 .h3 { font-size: clamp(1.5rem, 2.4vw, 2rem); }
 .italic-gold { font-style: italic; color: var(--gold); }
@@ -152,7 +156,7 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 500; color: var(--ink); li
     linear-gradient(0deg, rgba(253,251,248,.55), transparent 40%);
 }
 .hero__inner { padding-block: clamp(70px, 12vw, 150px); }
-.hero__col { max-width: 620px; }
+.hero__col { max-width: 700px; }
 .hero h1 { margin-bottom: 1.4rem; }
 .hero .lede { max-width: 30em; margin-bottom: 2rem; }
 .hero__trust { display:flex; flex-wrap:wrap; gap: 10px 26px; margin-top: 2.4rem; color: var(--plum); font-size: .86rem; font-weight: 500; }
