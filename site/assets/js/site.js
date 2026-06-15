@@ -83,6 +83,57 @@
     setInterval(tick, 1000);
   }
 
+  /* free-lessons lead capture -> Kitchanga interest list -> redirect */
+  var flForm = document.getElementById("fl-form");
+  if (flForm) {
+    var FL = {
+      endpoint: "https://app.awakenlumora.com/api/interest",
+      apiKey: "0283930c20e7045e84725fc7b932f7a2f51d040a9929a3306710c8b7154f8b33",
+      source: "awakenlumora-free-lessons",
+      dest: "/free-lessons/"
+    };
+    var msg = document.getElementById("fl-msg");
+    var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    var setMsg = function (text, cls) { if (msg) { msg.textContent = text || ""; msg.className = "fl-msg" + (cls ? " " + cls : ""); } };
+
+    flForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (flForm.classList.contains("loading")) return;
+
+      var name = (document.getElementById("fl-name").value || "").trim();
+      var email = (document.getElementById("fl-email").value || "").trim();
+      var hp = (document.getElementById("fl-company").value || "").trim();
+
+      if (hp) { window.location.href = FL.dest; return; } // bot honeypot
+      if (!name) { setMsg("Please enter your first name.", "err"); return; }
+      if (!emailRe.test(email)) { setMsg("Please enter a valid email address.", "err"); return; }
+
+      flForm.classList.add("loading");
+      setMsg("Unlocking your lessons…", "ok");
+
+      var done = function () {
+        try { localStorage.setItem("lumora_unlocked", "1"); localStorage.setItem("lumora_name", name); } catch (_) {}
+        window.location.href = FL.dest;
+      };
+
+      fetch(FL.endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "x-api-key": FL.apiKey },
+        body: JSON.stringify({ name: name, email: email, source: FL.source })
+      })
+        .then(function (r) { return r.json().catch(function () { return {}; }).then(function (d) { return { ok: r.ok, d: d }; }); })
+        .then(function (res) {
+          if (res.ok && res.d && res.d.success) {
+            done();
+          } else {
+            // Soft-fail: don't trap the visitor behind a backend hiccup — still grant access.
+            done();
+          }
+        })
+        .catch(function () { done(); });
+    });
+  }
+
   /* current year */
   var yr = document.getElementById("yr");
   if (yr) yr.textContent = new Date().getFullYear();

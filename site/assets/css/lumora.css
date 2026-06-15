@@ -329,6 +329,52 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 500; color: var(--ink); li
 .closing p { color:#D8CFE0; }
 .closing .narrow > p { font-size: 1.12rem; }
 
+/* ---------- free lessons (homepage lead capture) ---------- */
+.fl-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; max-width: 1000px; margin: 50px auto 0; }
+.fl-card { position: relative; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--sand); box-shadow: var(--shadow-sm); background: var(--ink); aspect-ratio: 16/10; }
+.fl-card img { width: 100%; height: 100%; object-fit: cover; opacity: .82; transition: transform .5s var(--ease), opacity .4s; }
+.fl-card:hover img { transform: scale(1.05); opacity: .68; }
+.fl-card__overlay { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 18px 20px; background: linear-gradient(180deg, rgba(26,18,37,.1) 0%, rgba(26,18,37,.78) 100%); }
+.fl-card__badge { position: absolute; top: 14px; left: 14px; display: inline-flex; align-items: center; gap: 6px; font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #fff; background: rgba(155,123,60,.92); padding: 6px 12px; border-radius: 999px; }
+.fl-card__key { font-size: .72rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--gold-soft); margin-bottom: 3px; }
+.fl-card__title { font-family: var(--serif); font-size: 1.45rem; color: #fff; line-height: 1.12; }
+.fl-card__dur { font-size: .8rem; color: #C9BFD2; margin-top: 5px; }
+.fl-play { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 56px; height: 56px; border-radius: 50%; background: rgba(255,255,255,.16); backdrop-filter: blur(4px); border: 1px solid rgba(255,255,255,.4); display: grid; place-items: center; transition: background .3s, transform .3s var(--ease); }
+.fl-card:hover .fl-play { background: var(--gold); transform: translate(-50%,-50%) scale(1.08); }
+
+.fl-form { max-width: 540px; margin: 44px auto 0; }
+.fl-form__row { display: flex; gap: 12px; }
+.fl-input { flex: 1; padding: 16px 18px; border-radius: 12px; border: 1px solid var(--sand); background: var(--white); font-family: var(--sans); font-size: 1rem; color: var(--ink); transition: border-color .25s, box-shadow .25s; }
+.fl-input:focus { outline: none; border-color: var(--gold-soft); box-shadow: 0 0 0 3px var(--gold-glow); }
+.fl-input::placeholder { color: var(--mauve); }
+.fl-hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.fl-form .btn { width: 100%; margin-top: 12px; }
+.fl-note { text-align: center; font-size: .84rem; color: var(--mauve); margin: 14px auto 0; max-width: 42ch; }
+.fl-msg { text-align: center; font-size: .92rem; margin: 14px auto 0; min-height: 1.2em; }
+.fl-msg.err { color: #B4452E; }
+.fl-msg.ok { color: var(--gold-deep); }
+.fl-form.loading .btn { opacity: .7; pointer-events: none; }
+@media (max-width: 760px){
+  .fl-cards { grid-template-columns: 1fr; max-width: 420px; }
+  .fl-form__row { flex-direction: column; }
+}
+
+/* ---------- lessons page (/free-lessons) ---------- */
+.lp-hero { text-align: center; padding-block: clamp(48px,8vw,90px) clamp(20px,4vw,40px); }
+.lp-hero .eyebrow { justify-content: center; }
+.lesson { max-width: 920px; margin: 0 auto; padding-block: clamp(36px,6vw,64px); border-top: 1px solid var(--sand); }
+.lesson:first-of-type { border-top: 0; }
+.lesson__head { display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-bottom: 8px; }
+.lesson__n { font-family: var(--serif); font-size: 2.4rem; color: var(--gold); line-height: 1; }
+.lesson__key { font-size: .74rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--mauve); }
+.lesson h2 { font-size: clamp(1.8rem,3.4vw,2.6rem); margin: 2px 0 10px; }
+.lesson p.lesson__desc { color: var(--plum); max-width: 60ch; margin: 0 0 24px; font-size: 1.05rem; }
+.lesson video { width: 100%; border-radius: var(--radius); background: #000; box-shadow: var(--shadow); display: block; aspect-ratio: 16/9; }
+.lp-cta { text-align: center; }
+.lp-cta .plan__price { margin-top: 0; }
+.back-home { display:inline-flex; align-items:center; gap:8px; font-size:.9rem; color: var(--plum); font-weight: 500; }
+.back-home:hover { color: var(--gold-deep); }
+
 /* ---------- footer ---------- */
 .site-footer { background: var(--ink); color: #B9AEC4; padding-block: 56px; }
 .site-footer .wrap { display:flex; flex-wrap:wrap; gap: 24px; align-items:center; justify-content:space-between; }
